@@ -19,7 +19,13 @@ jobs:
     - run: pipenv install --python `which python`
     - name: Run scraper
       run: pipenv run jupyter execute scrape.ipynb
-    - name: Add and commit	
+    - name: Add and commit
+      id: add_commit
+      uses: EndBug/add-and-commit@v8
+      with:
+        committer_name: Automated
+        committer_email: actions@users.noreply.github.com
+        message: "Latest data"
       run: |-	
         git add .	
         git config user.name "Automated"	
